@@ -1,0 +1,22 @@
+{
+  "name": "simple-key-value-api",
+  "version": "1.0.0",
+  "description": "simple api for version controlled key value storing",
+  "author": "agileup <agileup@gmail.com>",
+  "main": "bin/www.js",
+  "scripts": {
+    "start": "cross-env LOG_LEVEL=debug NODE_ENV=development NODE_PATH=app/ nodemon -r dotenv/config bin/www.js dotenv_config_path=.env.development",
+    "test": "cross-env LOG_LEVEL=debug NODE_ENV=development NODE_PATH=app/ nodemon -r dotenv/config test/index.js dotenv_config_path=.env.development"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.16.2",
+    "mongoose": "^5.7.13",
+    "morgan": "^1.9.1",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3"
+  },
+  "license": "ISC"
+}
