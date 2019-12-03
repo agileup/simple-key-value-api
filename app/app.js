@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path');
 
 const logger = require(path.resolve('lib/logger'));
+const responseJSON = require(path.resolve('lib/responseJSON'));
 
 const app = express();
 
@@ -16,13 +17,18 @@ app.use(require('morgan')('combined', {
 app.use(express.urlencoded({ 'extended': 'true' }));
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/', require(path.resolve('routes')));
 
-app.use( (err, req, res, next) => {
-    logger.error('error', err);
+app.use((req, res, next) => {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.send(err.showMessage ? err.message : 'error');
+    
+    responseJSON(res, err);
 });
 
 module.exports = app;
