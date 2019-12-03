@@ -13,6 +13,7 @@
     "url": "git@github.com:agileup/simple-key-value-api.git"
   },
   "dependencies": {
+    "cross-env": "^6.0.3",
     "dotenv": "^2.0.0",
     "express": "^4.16.2",
     "mongoose": "^5.7.13",
@@ -20,14 +21,17 @@
     "winston": "^2.3.0"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3",
     "jest": "^24.9.0",
     "supertest": "^4.0.2"
   },
   "jest": {
     "testEnvironment": "node",
-    "setupFiles": ["dotenv/config"],
-    "coveragePathIgnorePatterns": ["/node_modules/"]
+    "setupFiles": [
+      "dotenv/config"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "license": "ISC"
 }
