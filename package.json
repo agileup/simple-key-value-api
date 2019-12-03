@@ -6,7 +6,11 @@
   "main": "bin/www.js",
   "scripts": {
     "start": "cross-env LOG_LEVEL=debug NODE_ENV=development NODE_PATH=app/ nodemon -r dotenv/config bin/www.js dotenv_config_path=.env.development",
-    "test": "cross-env LOG_LEVEL=debug NODE_ENV=development NODE_PATH=app/ nodemon -r dotenv/config test/index.js dotenv_config_path=.env.development"
+    "test": "cross-env LOG_LEVEL=debug NODE_ENV=development jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:agileup/simple-key-value-api.git"
   },
   "dependencies": {
     "dotenv": "^2.0.0",
@@ -16,7 +20,14 @@
     "winston": "^2.3.0"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3"
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFiles": ["dotenv/config"],
+    "coveragePathIgnorePatterns": ["/node_modules/"]
   },
   "license": "ISC"
 }
